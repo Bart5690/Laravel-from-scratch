@@ -1,20 +1,16 @@
 <?php
 
 use App\Models\Post;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $posts = Post::all();
-
     return view('posts', [
-        'posts' => Post::all()
-]);
-
+        'posts' => Post::all() // Corrected here
+    ]);
 });
 
-Route::get ('posts/{post}', function ($slug) {
-
-
+Route::get('posts/{post}', function ($slug) {
     $post = Post::find($slug);
 
     return view('post', [
